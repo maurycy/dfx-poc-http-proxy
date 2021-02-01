@@ -1,0 +1,4 @@
+```
+$ yarn build
+$ yarn start
+```
