@@ -1,0 +1,45 @@
+# OSX trash
+.DS_Store
+
+# Jest coverage information
+**/coverage/
+
+# Root log folder if any
+/logs/
+telepresence.log
+**/telepresence.log
+**/yarn-error.log
+
+# Node packages inside node services
+node_modules/
+
+# .env files
+.env
+
+# Local testing databases
+*.sqlite3
+
+# Compiled versions of micro services
+compiled-dist/
+shared/**/dist
+
+# Yarn error logs
+**/yarn-error.log
+
+# Eslint cache
+**/.eslintcache
+
+# Editor settings
+# .vscode/
+.idea/
+
+#Vim swap files
+*.swp
+
+# Keys
+*.pem
+*.key
+*.cert
+
+.terraform
+terraform-*.json
