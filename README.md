@@ -18,3 +18,10 @@ A DFINITY asset canister is a canister with the following [interface](https://gi
 $ yarn build
 $ yarn start
 ```
+
+Then go to [https://localhost:7812/](https://localhost:7812/)
+
+## TODO
+
+ * bug with encoding (you will see)
+ * work with any canister, not only with `lfvrz-miaaa-aaaab-aaaoa-cai` (it is hard-coded now)
