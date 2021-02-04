@@ -19,7 +19,7 @@ $ yarn build
 $ yarn start
 ```
 
-Then go to [https://localhost:7812/](https://localhost:7812/)
+Then go to [http://localhost:7812/](http://localhost:7812/)
 
 ## Test Any Canister
 
