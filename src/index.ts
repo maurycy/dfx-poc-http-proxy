@@ -1,10 +1,9 @@
 import express from 'express';
 import { createActorInterface } from './ic';
+import serverlessHttp from 'serverless-http';
 
 const DEFAULT_CANISTER_ID = `lfvrz-miaaa-aaaab-aaaoa-cai`;
 
-const PORT = 7812;
-const HOST = `localhost`;
 const app = express();
 
 app.all('*', async (req, res) => {
@@ -42,6 +41,10 @@ app.all('*', async (req, res) => {
     }
 });
 
-app.listen(PORT, HOST, async () => {
-   console.log(`listen(): ${HOST}:${PORT}`);
-});
+// const PORT = 7812;
+// const HOST = `localhost`;
+// app.listen(PORT, HOST, async () => {
+//    console.log(`listen(): ${HOST}:${PORT}`);
+// });
+
+export const handler = serverlessHttp(app);

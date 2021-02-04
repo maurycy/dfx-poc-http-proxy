@@ -12,14 +12,13 @@ A DFINITY asset canister is a canister with the following [interface](https://gi
  };
  ```
 
-## Usage
+## Development
 
 ```
-$ yarn build
-$ yarn start
+$ yarn build && sls offline start -s dev
 ```
 
-Then go to [http://localhost:7812/](http://localhost:7812/)
+Then go to [http://localhost:3000/dev/index.html](http://localhost:3000/dev/index.html)
 
 ## Test Any Canister
 

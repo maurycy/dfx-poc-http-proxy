@@ -1,0 +1,21 @@
+# serverless.yml
+
+service: dfx-poc-http-proxy
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage}
+  region: us-west-2
+
+functions:
+  app:
+    handler: dist/index.handler
+    memorySize: 256
+    timeout: 900
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'
+
+plugins:
+  - serverless-offline
