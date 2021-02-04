@@ -21,6 +21,8 @@ $ yarn start
 
 Then go to [https://localhost:7812/](https://localhost:7812/)
 
-## TODO
+## Test Any Canister
 
- * work with any canister, not only with `lfvrz-miaaa-aaaab-aaaoa-cai` (it is hard-coded now)
+```
+curl -H "Canister-Id: xtjxx-ayaaa-aaaab-aacna-cai" http://localhost:7812/
+```

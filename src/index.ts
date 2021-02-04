@@ -4,7 +4,7 @@ import { promisify } from 'util';
 import { createActorInterface } from './ic';
 
 // TODO: one per every domain
-const canisterId = `lfvrz-miaaa-aaaab-aaaoa-cai`;
+const DEFAULT_CANISTER_ID = `lfvrz-miaaa-aaaab-aaaoa-cai`;
 
 const execAsync = promisify(exec);
 const dfxPath = `/usr/local/bin/dfx`;
@@ -15,13 +15,14 @@ const app = express();
 
 app.all('*', async (req, res) => {
     try {
+        const canisterId = req.header('Canister-Id') ?? DEFAULT_CANISTER_ID;
         const path = req.path.replace(/\/$/, 'index').replace(/^\//, '').concat('.html');
 
-        console.log(`incoming request ${req.path}, `);
+        console.log(`incoming retrieve '${req.path}' from '${canisterId}'`);
 
         // XXX: pool?
         const actorInterface = createActorInterface({
-            canisterId,
+            canisterId
         });
 
         console.log("fetching from dfinity network", path);
