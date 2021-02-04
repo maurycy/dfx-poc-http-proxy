@@ -1,13 +1,8 @@
 import express from 'express';
-import { exec } from 'child_process';
-import { promisify } from 'util';
 import { createActorInterface } from './ic';
 
 // TODO: one per every domain
 const DEFAULT_CANISTER_ID = `lfvrz-miaaa-aaaab-aaaoa-cai`;
-
-const execAsync = promisify(exec);
-const dfxPath = `/usr/local/bin/dfx`;
 
 const PORT = 7812;
 const HOST = `localhost`;
