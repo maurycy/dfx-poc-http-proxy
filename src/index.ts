@@ -1,6 +1,7 @@
 import express from 'express';
 import { exec } from 'child_process';
 import { promisify } from 'util';
+import { createActorInterface } from './ic';
 
 // TODO: one per every domain
 const canisterId = `lfvrz-miaaa-aaaab-aaaoa-cai`;
@@ -14,18 +15,30 @@ const app = express();
 
 app.all('*', async (req, res) => {
     try {
-        const path = req.path.replace(/\/$/, 'index.html').replace(/^\//, '');
+        const path = req.path.replace(/\/$/, 'index').replace(/^\//, '').concat('.html');
 
         console.log(`incoming request ${req.path}, `);
 
-        const cmd = `${dfxPath} canister --network=ic call ${canisterId} retrieve --output=idl --type=idl '("${path}")'`;
-        console.log(`calling ${cmd}`);
+        // XXX: pool?
+        const actorInterface = createActorInterface({
+            canisterId,
+        });
 
-        const { stdout } = await execAsync(cmd);
+        console.log("fetching from dfinity network", path);
+        const promise = actorInterface.retrieve(path);
 
-        console.log(`200`);
+        promise.then((dres: any) => {
+            const sres = Buffer.from(dres).toString();
 
-        res.status(200).send(stdout);
+            console.log("received response", sres.substring(0, 256));
+            // console.log("received response", sres);
+
+            res.status(200).send(sres);
+        }).catch((err) => {
+            console.log(err);
+
+            res.status(500);
+        });
     } catch (err) {
         console.log(err);
 
