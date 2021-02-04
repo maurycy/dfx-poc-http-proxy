@@ -1,7 +1,6 @@
 import express from 'express';
 import { createActorInterface } from './ic';
 
-// TODO: one per every domain
 const DEFAULT_CANISTER_ID = `lfvrz-miaaa-aaaab-aaaoa-cai`;
 
 const PORT = 7812;
