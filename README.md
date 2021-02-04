@@ -23,5 +23,5 @@ Then go to [http://localhost:3000/dev/index.html](http://localhost:3000/dev/inde
 ## Test Any Canister
 
 ```
-curl -H "Canister-Id: xtjxx-ayaaa-aaaab-aacna-cai" http://localhost:7812/
+curl -H "Canister-Id: xtjxx-ayaaa-aaaab-aacna-cai" http://localhost:3000/dev/index.html
 ```
