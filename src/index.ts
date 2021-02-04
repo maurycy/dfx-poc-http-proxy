@@ -10,7 +10,8 @@ const app = express();
 app.all('*', async (req, res) => {
     try {
         const canisterId = req.header('Canister-Id') ?? DEFAULT_CANISTER_ID;
-        const path = req.path.replace(/\/$/, 'index').replace(/^\//, '').concat('.html');
+        // const path = req.path.replace(/\/$/, 'index').replace(/^\//, '').concat('.html');
+        const path = req.path.replace(/^\//, '');
 
         console.log(`incoming retrieve '${req.path}' from '${canisterId}'`);
 
